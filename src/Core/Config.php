@@ -13,22 +13,22 @@ namespace HybridAgent\Core;
 final class Config
 {
     // How many past moves to feed the model as context
-    public const HISTORY_LENGTH = 4;
+    public const HISTORY_LENGTH = 6;
 
     // Probability the model tries something other than its top move
-    public const CREATIVITY_CHANCE = 0.15;
+    public const CREATIVITY_CHANCE = 0.05;
 
     // Boltzmann sampling temperature; >1 = more variety, <1 = more conservative
-    public const CREATIVITY_TEMPERATURE = 1.0;
+    public const CREATIVITY_TEMPERATURE = 0.8;
 
     // Partial-train the model after this many games
-    public const REPLAY_TRIGGER_GAMES = 3;
+    public const REPLAY_TRIGGER_GAMES = 5;
 
     // How many old samples to replay during partial training (prevents catastrophic forgetting)
-    public const REHEARSAL_SIZE = 300;
+    public const REHEARSAL_SIZE = 500;
 
     // Minimum neural-net confidence required before trusting it over Minimax
-    public const CONFIDENCE_THRESHOLD = 0.72;
+    public const CONFIDENCE_THRESHOLD = 0.85;
 
     // Filesystem paths (relative to project root)
     public const MODEL_PATH = __DIR__ . '/../../models/model.rbx';
