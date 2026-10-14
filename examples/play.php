@@ -69,9 +69,13 @@ while ($game->checkWinner() === null) {
     $game->display();
 
     echo "Your move (X) [0-8]: ";
-    $inputPos = trim(fgets(STDIN));
+    $rawInput = fgets(STDIN);
+    if ($rawInput === false) {
+        break;
+    }
+    $inputPos = trim($rawInput);
 
-    if (!is_numeric($inputPos) || !$game->makeMove((int) $inputPos, 1)) {
+    if ($inputPos === '' || !is_numeric($inputPos) || !$game->makeMove((int) $inputPos, 1)) {
         echo "--> Invalid move or spot taken! Try again.\n";
         continue;
     }
